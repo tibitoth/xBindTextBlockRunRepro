@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="xBindTextBlockRunRepro.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:xBindTextBlockRunRepro"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- Works -->
+        <TextBlock><Run Text="{x:Bind Person.Name}"/> <Run Text="{x:Bind Person.Age}"/></TextBlock>
+
+        <!-- Works -->
+        <ListView ItemsSource="{x:Bind People}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Person">
+                    <TextBlock Text="{x:Bind Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Doesn't work -->
+        <ListView ItemsSource="{x:Bind People}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Person">
+                    <TextBlock><Run Text="{x:Bind Name}"/> <Run Text="{x:Bind Age}"/></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Window>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "xBindTextBlockRunRepro (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "xBindTextBlockRunRepro (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
